@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="vfm_img/xai_icon.jpeg" sizes="32x32" />
+    <link rel="apple-touch-icon" href="vfm_img/xai_icon.jpeg" />
+    <meta charset="utf-8">
+    <title>
+      Hybrid VFM for ESP design
+    </title>
+    <meta name="description" content="Introducing Hybrid VFM Technology">
+    <meta name="author" content="Arash Pourakaberian">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+    
+  </head>
+  
+  <body>
+    
+    <div class="reveal">
+      
+      <div class="slides">
+	
+	<section data-background="vfm_img/sl1.jpeg">
+	  <h3 style="color:darkgrey">In the name of Allah</h3>
+	  <br>
+	  <h3 style="color:azure">
+	    Development of AI-based <abbr title="Virtual Flow Meter">VFM</abbr> for online control of <abbr title="Electrical Submersible Pump">ESP</abbr>
+	  </h3>
+	  <p style="color:beige">
+	    By: <span class="fragment highlight-red">
+	    Arash Pourakaberian
+	    </span>
+	    <br>
+	    Supervisor: <span class="fragment highlight-green">
+	      Dr. Rohaldin Miri
+	    </span>
+	  </p>
+	  
+	</section>
+
+	<section data-background="vfm_img/ps.png" data-background-size="contain">
+	  <h3 style="text-align:left">Problem Statement</h3>
+	  <br>
+	  <h4 style="color:firebrick" class="fragment grow">
+	    Correct Interpretation of \( T_{BH} \) & \( P_{BH} \)
+	  </h4>
+	  <br>
+	  <ul>
+	    <li>
+	      <p class="fragment fade-in-then-semi-out">
+		Continuous downhole flow performance
+	      </p>
+	    </li>
+	    <li>
+	      <p class="fragment fade-in-then-semi-out">
+		Reservoir properties (<abbr title="productivity index">PI</abbr>, \( \overline{p_i} \), and skin)
+	      </p>
+	    </li>
+	    <li>
+	      <p class="fragment fade-in-then-semi-out">
+		Online control and optimization of ESP-based well production
+	      </p>
+	    </li>
+	  </ul>
+	</section>
+
+	<section>
+	  
+	  <section>
+	    <h3 style="text-align:left">Introduction</h3>
+	    <h4 style="text-align:left;color:goldenrod">Design Parameters for ESP</h4>
+	    <ol>
+	      <li>
+		<p class="fragment fade-in-then-semi-out">
+		  PI of the well
+		</p>
+	      </li>
+	      <li>
+		<p class="fragment fade-in-then-semi-out">
+		  Casing & tubing size
+		</p>
+	      </li>
+	      <li>
+		<p class="fragment fade-in-then-semi-out">
+		  Static liquid level
+		</p>
+	      </li>
+	    </ol>
+	  </section>
+
+	  <section>
+	    <h3 style="text-align:left">Cont'd</h3>
+	    <h4 style="text-align:left;color:goldenrod">
+	      <abbr title="total dynamic head">TDH</abbr>:
+	    </h4>
+	    <p class="fragment fade-right" style="text-align:left">
+	      Pressure head immediately above the pump at wellhead
+	    </p>
+	    <p class="fragment fade-up">
+	      \[ TDH = h_{static \; column} + h_{friction \; loss} + h_{back \; pressure}  \]
+	    </p>
+	    <h4 style="text-align:left;color:maroon">
+	      Parameters affecting TDH:
+	    </h4>
+	    <p class="fragment fade-right" style="text-align:left">
+	      \( q_o , \; ID_{tubing} \) & fluid properties
+	    </p>
+	  </section>
+	  
+	</section>
+
+	<section>
+
+	  <section>
+	    <h3 style="text-align:left">Workflow of ESP design</h3>
+	    <p class="fragment fade-in-then-semi-out" style="text-align:left">
+	      <em>Step 1:</em>
+	      <abbr title="Inflow Performance Relationship">IPR</abbr>
+	      \( \rightarrow \; \; q_{Ld} \; \rightarrow \)
+	      pump size (manufacturer's specification) \( q_{Lp} \ge q_{Ld} \)
+	    </p>
+	    <p class="fragment fade-in-then-semi-out" style="text-align:left">
+	      <em>Step 2:</em>
+	      IPR
+	      \( \rightarrow  \; p_{wf} \; \)
+	      for \( q_{Lp} \)
+	    </p>
+	    <p class="fragment fade-in-then-semi-out" style="text-align:left">
+	      <em>Step 3:</em>
+	      Estimate minimum pump depth based on minimum intake pressure of the pump
+	      \[ D_{pump, min} = D - \frac{p_{wf} - p_{in, min}}{0.433 \gamma_L} \]
+	    </p>
+	  </section>
+
+	  <section>
+	    <h3 style="text-align:left">Cont'd</h3>
+	    <p class="fragment fade-in-then-semi-out" style="text-align:left">
+	      <em>Step 4:</em>
+	      Select the maximum possible depth of pump \( D_{pump} \ge D_{pump,min} \)
+	    </p>
+	    <p class="fragment fade-in-then-semi-out" style="text-align:left">
+	      <em>Step 5:</em>
+	      Calculate \( p_{out} \) from TPR curve of the well
+	    </p>
+	    <p class="fragment fade-in-then-semi-out" style="text-align:left">
+	      <em>Step 6:</em>
+	      calculate required pump head \( \Delta p = p_{out} - p_{in}  \) 
+	    </p>
+	    <p class="fragment fade-in-then-semi-out" style="text-align:left">
+	      <em>Step 7:</em>
+	      Refer to pump characteristic curve \( \rightarrow  \) head per stage
+	      \( \rightarrow  \) number of stages
+	    </p>
+	    <p class="fragment fade-in-then-semi-out" style="text-align:left">
+	      <em>Step 8:</em>
+	      \( total \; power = power \; per \; stage \times number \; of \; stages  \)
+	    </p>
+	  </section>
+	  
+	</section>
+
+	<section>
+	  <h3 style="text-align:left">Methodology</h3>
+	  <ul>
+	  <li><p class="fragment fade-in-then-semi-out" style="text-align:left;color:royalblue">
+	    <abbr title="Design of Experiment">DOE</abbr> and forward model (IPR, ESP model and TPR)  \( \rightarrow \)
+	    Database
+	  </P></li>
+	  <li><p class="fragment fade-in-then-semi-out" style="text-align:left;color:royalblue">
+	    Train <abbr title="Artificial Neural Network">ANN</abbr> using Database
+	  </p></li>
+	  <li><p class="fragment fade-in-then-semi-out" style="text-align:left;color:royalblue">
+	    Inversion precedure \( \rightarrow \) estimate (\( \overline{p_i} \), PI, \(q_{Lp}\))
+	    \( \rightarrow \) reproducing available data (ESP sensor and \( p_{wh} \))
+	  </p></li>
+	</section>
+
+	</div>
+
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    
+    <script>
+     
+     Reveal.initialize({
+	 controls: true,
+	 progress: true,
+	 center: true,
+	 hash: true,
+	 history: true,
+	 transition: 'convex',
+	 backgroundTransition: 'convex',
+	 slideNumber: 'c/t',
+	 touch: 'true',
+	 math: {
+	     mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+	     config: 'TeX-AMS_HTML-full',
+	     TeX: {
+		 Macros: {
+		     R: '\\mathbb{R}',
+		     set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+		 }
+	     }
+	 },
+	 
+	 plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath ]
+     });
+
+    </script>
+
+  </body>
+  
+</html>
+
